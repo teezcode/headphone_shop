@@ -47,12 +47,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               children: [
                 Center(
                   child: Container(
-                    width: 208,
-                    height: 236,
+                    width: 300,
+                    height: 350,
                    decoration: BoxDecoration(
                      image: widget.headPhonesDataModel.imageUrl == null ? null : DecorationImage(
                        image:AssetImage(widget.headPhonesDataModel.imageUrl!),
-                       fit: BoxFit.cover
+                       fit: BoxFit.fitWidth
                      )
                    ),
                   ),
