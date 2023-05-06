@@ -9,17 +9,17 @@ class BoxShimmer extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
-      //height: 250,
+      height: 250,
       child: ListView.builder(
-        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
         itemCount: 6,
         itemBuilder: (_, index){
           return Shimmer.fromColors(
             baseColor: Colors.grey[400]!,
             highlightColor: Colors.grey[300]!,
             child: Container(
-              margin: EdgeInsets.only(right: 10),
-              //height: 250,
+              margin: EdgeInsets.only(left: 10),
+              height: 250,
               width: 157,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -36,37 +36,53 @@ class BoxShimmer extends StatelessWidget{
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(width: 70,height: 30,),
+                            Container(width: 70,height: 7,decoration: BoxDecoration(
+                              color: Colors.grey,
+                    borderRadius: BorderRadius.circular(5),
+                            ),),
                             const SizedBox(height: 5),
                             Row(
                               children:  [
-                                Container(width: 50,height: 30,),
-                                SizedBox(width: 5),
+                                Container(width: 50,height: 7,
+                                  decoration:BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                      color: Colors.grey
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
                               ],
                             ),
                           ],
                         ),
                         Container(
                           width: 20,height: 20,
-                          decoration: BoxDecoration(shape: BoxShape.circle),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                              color: Colors.grey
+                            //borderRadius: BorderRadius.circular(5),
+                          ),
                         )
                       ],
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     Container(
                       width: 91.99,
                       height: 118.27,
-                      color: Colors.grey,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.grey,),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
-                          children:  const [
-                            SizedBox(width: 50,height: 30,),
-                            SizedBox(height: 8),
-                            SizedBox(width: 50,height: 30,),
+                          children: [
+                            Container(width: 50,height: 9,decoration: BoxDecoration(color: Colors.grey,
+                              borderRadius: BorderRadius.circular(5),
+                            ),),
+                            const SizedBox(height: 8),
+                            Container(width: 50,height: 9, decoration:BoxDecoration(color: Colors.grey,
+                              borderRadius: BorderRadius.circular(5),
+                            )),
                           ],
                         ),
                         GestureDetector(
@@ -74,8 +90,9 @@ class BoxShimmer extends StatelessWidget{
 
                           },
                           child: Container(
-                            width: 28,
-                            height: 28,
+                            width: 29,
+                            height: 15,
+                              decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(5),)
                           ),
                         )
                       ],

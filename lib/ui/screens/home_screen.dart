@@ -140,7 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   builder: (context, state){
                     if(state is HomeLoadingState){
-                      return const BoxShimmer();
+                      return const SizedBox(
+                        height: 350,
+                          child: BoxShimmer());
                     } else if(state is HomeSuccessState){
                       return SizedBox(
                         height: 300,
