@@ -55,10 +55,46 @@ class _HomeScreenState extends State<HomeScreen> {
           leading:
               SvgPicture.asset("svgs/drawer_icon.svg", fit: BoxFit.scaleDown),
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: SvgPicture.asset("svgs/notification_icon.svg",
-                  fit: BoxFit.scaleDown),
+            Container(
+              decoration: BoxDecoration(
+                  //color: const Color(0xffF0F0F0),
+                  borderRadius: BorderRadius.circular(10)
+              ),
+              width:50,
+              height: 70,
+              child: Stack(
+                children: [
+                  const SizedBox(
+                    width: 35,
+                    height: 30,
+                    //color: Colors.yellow,
+                  ),
+                  SvgPicture.asset(
+                    'svgs/cart.svg',
+                    width: 25,
+                    height: 20,
+                  ),
+                  Positioned(
+                    left: 12,
+                    bottom: 25,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.amber,
+                      ),
+                      width: 15,
+                      height: 26,
+                      child: const Center(
+                        child: Text('0',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 9
+                          ),),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
