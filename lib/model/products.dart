@@ -1,0 +1,52 @@
+class HeadPhones{
+
+  static List<Map<String,dynamic>> productLists = [
+    {
+      'id' : '1',
+      'name': "Sony WH-1000XM4",
+      'price': 310.99,
+      'rating': "4.5",
+      'description' : 'No matter where you go, the black Sony WH-1000XM4 Wireless Noise-Canceling Over-Ear Headphones deliver pristine sound quality while automatically adjusting ambient sound according to your activity and registered locations, leaving your hands and mind free from the hassle of changing settings just to hear what you want to hear.',
+      'imageUrl': "https://www.bhphotovideo.com/cdn-cgi/image/format=auto,fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_wh1000xm4_b_wh_1000xm4_wireless_noise_canceling_over_ear_1596715570_1582549.jpg"
+    },
+    {
+      'id' : '2',
+      'name': "Sony INZONE H9",
+      'price': 420.99,
+      'description': 'Immerse yourself into your favorite PC and PlayStation 5 games and communicate clearly with your teammates with the Sony INZONE H9 Wireless Noise-Canceling Gaming Headset. Equipped with two wireless technologies, the H9 gives you a cable-free experience as well as an extended battery life suitable for prolonged gaming',
+      'imageUrl': "https://static.bhphoto.com/images/multiple_images/images500x500/1659519022_IMG_1808856.jpg"
+    },
+    {
+      'id' : '3',
+      'name': "Sony MDR-ZX110AP",
+      'description': "This Sony MDR-ZX110AP On-Ear Headphones with Microphone Kit from B&H bundles two pairs of these headphones together for your shopping convenience. 30mm dynamic drivers deliver an extended low frequency response of 12 Hz to 22 kHz so you can enjoy all kinds of music on-the-go. For improved portability, the earcups can swivel",
+      'price': 180.99,
+      'rating': "3.5",
+      'imageUrl': "https://slickmobile.com.ng/wp-content/uploads/2021/10/products-anker-soundcore-life-q10.jpg"
+    },
+    {
+      'id' : '4',
+      'name': "Sennheiser HD 650",
+      'price': 900.99,
+      'rating': "5.5",
+      'description': 'The HD 650 from Sennheiser are reference-class stereo headphones designed to deliver a true audiophile experience with an open, natural sound. Specially developed acoustic silk was used to provide uniform attenuation over the entire area of each ear-cup. The lightweight aluminum voice coils ensure a remarkable transient response',
+      'imageUrl': "https://media.wired.com/photos/63e69de969cf98bf35404277/1:1/w_1278,h_1278,c_limit/Best-Wireless-Headphones-Featured-Focal-Bathys-Gear.jpg"
+    },
+    {
+      'id' : '5',
+      'name': "Beat By Dre Hq120",
+      'price': 2210.99,
+      'rating': "6.5",
+      'description': "This Sony MDR-ZX110AP On-Ear Headphones with Microphone Kit from B&H bundles two pairs of these headphones together for your shopping convenience. 30mm dynamic drivers deliver an extended low frequency response of 12 Hz to 22 kHz so you can enjoy all kinds of music on-the-go. For improved portability, the earcups can swivel",
+      'imageUrl': "https://www.beatsbydre.com/content/dam/beats/web/product/headphones/studio3-wireless/plp/bbd.plpasset.headphones.studio3-v2.jpg.large.2x.jpg"
+    },
+    {
+      'id' : '6',
+      'name': "Bose WTH 230",
+      'price': 410.99,
+      'rating': "6.0",
+      'description': "This Sony MDR-ZX110AP On-Ear Headphones with Microphone Kit from B&H bundles two pairs of these headphones together for your shopping convenience. 30mm dynamic drivers deliver an extended low frequency response of 12 Hz to 22 kHz so you can enjoy all kinds of music on-the-go. For improved portability, the earcups can swivel",
+      'imageUrl': "https://media.wired.com/photos/641e28d7c5d2100c6c651020/16:9/w_2167,h_1218,c_limit/Bose-QC35-II-Gear.png"
+    },
+  ];
+}
