@@ -36,14 +36,14 @@ class BoxShimmer extends StatelessWidget{
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(width: 70,height: 7,decoration: BoxDecoration(
-                              color: Colors.grey,
-                    borderRadius: BorderRadius.circular(5),
+                            Container(width: 80,height: 5,decoration: BoxDecoration(
+                              color: Colors.grey[700],
+                                borderRadius: BorderRadius.circular(5),
                             ),),
                             const SizedBox(height: 5),
                             Row(
                               children:  [
-                                Container(width: 50,height: 7,
+                                Container(width: 50,height: 5,
                                   decoration:BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
                                       color: Colors.grey
@@ -55,7 +55,7 @@ class BoxShimmer extends StatelessWidget{
                           ],
                         ),
                         Container(
-                          width: 20,height: 20,
+                          width: 20,height: 10,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                               color: Colors.grey
@@ -75,12 +75,13 @@ class BoxShimmer extends StatelessWidget{
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(width: 50,height: 9,decoration: BoxDecoration(color: Colors.grey,
+                            Container(width: 50,height: 5,decoration: BoxDecoration(color: Colors.grey,
                               borderRadius: BorderRadius.circular(5),
                             ),),
                             const SizedBox(height: 8),
-                            Container(width: 50,height: 9, decoration:BoxDecoration(color: Colors.grey,
+                            Container(width: 65,height: 5, decoration:BoxDecoration(color: Colors.grey,
                               borderRadius: BorderRadius.circular(5),
                             )),
                           ],
@@ -90,7 +91,7 @@ class BoxShimmer extends StatelessWidget{
 
                           },
                           child: Container(
-                            width: 29,
+                            width: 20,
                             height: 15,
                               decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(5),)
                           ),

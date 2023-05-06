@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:headphone_shop/ui/screens/cart_screen.dart';
 
+import '../../model/Datamodel/product_dataModel.dart';
 import '../widgets/custom_button.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({Key? key}) : super(key: key);
+  final HeadPhonesDataModel headPhonesDataModel;
+  const ProductDetailsScreen({Key? key, required this.headPhonesDataModel}) : super(key: key);
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -46,10 +48,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 Center(
                   child: Container(
                     width: 208,
-                    height: 216,
-                   decoration: const BoxDecoration(
-                     image: DecorationImage(
-                       image:AssetImage("images/detail_headset.png"),
+                    height: 236,
+                   decoration: BoxDecoration(
+                     image: widget.headPhonesDataModel.imageUrl == null ? null : DecorationImage(
+                       image:AssetImage(widget.headPhonesDataModel.imageUrl!),
                        fit: BoxFit.cover
                      )
                    ),
@@ -79,19 +81,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  "Boat Ws503",
-                                  style: TextStyle(
+                                 Text(
+                                  widget.headPhonesDataModel.name!,
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,
                                       color: Colors.white),
                                 ),
                                 SizedBox(height: 5),
                                 Row(
-                                  children: const [
+                                  children: [
                                     Text(
-                                      "\$89.00",
-                                      style: TextStyle(
+                                      "\$ ${widget.headPhonesDataModel.discountPrice}",
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 18,
                                           color: Colors.grey,
@@ -99,8 +101,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     ),
                                     SizedBox(width: 5),
                                     Text(
-                                      "\$99.00",
-                                      style: TextStyle(
+                                      "\$ ${widget.headPhonesDataModel.price}",
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 20,
                                           color: Colors.white),
@@ -109,16 +111,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ),
                                 SizedBox(height: 5),
                                 Row(
-                                  children: const [
+                                  children:[
                                     Text(
-                                      "4.5",
-                                      style: TextStyle(
+                                      widget.headPhonesDataModel.rating!,
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 16,
                                           color: Colors.white),
                                     ),
                                     SizedBox(width: 5),
-                                    Icon(
+                                    const Icon(
                                       Icons.star,
                                       size: 15,
                                       color: Colors.yellow,
@@ -158,7 +160,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               color: Colors.white),
                         ),
                         const SizedBox(height: 15),
-                        const Text("Sony ASR-48 True Wireless headphone offer up to 6 hours of use with an additional 9 hours in the included charging case. Voice assista...Read More",
+                         Text(widget.headPhonesDataModel.description!,
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 15,

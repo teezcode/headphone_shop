@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (context,index){
                               return ProductCard(headPhonesDataModel: state.headPhones[index],
                                 onOrderClicked:()=> Navigator.push(
-                                    context, MaterialPageRoute(builder: (context)=>const ProductDetailsScreen())),
+                                    context, MaterialPageRoute(builder: (context)=> ProductDetailsScreen(headPhonesDataModel: state.headPhones[index],))),
                               );
                             }
                         ),
