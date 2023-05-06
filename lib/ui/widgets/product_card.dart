@@ -84,11 +84,11 @@ class ProductCard extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       image: headPhonesDataModel.imageUrl == null ? null : DecorationImage(
-                        image: NetworkImage(headPhonesDataModel.imageUrl!),
+                        image: AssetImage(headPhonesDataModel.imageUrl!),
                         //fit: BoxFit.cover
                       )
                     ),
-                    width: 91.99,
+                    width: 105.99,
                     height: 118.27,
                   ),
                   SizedBox(height: 30),
