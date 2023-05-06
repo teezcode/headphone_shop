@@ -1,8 +1,13 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:headphone_shop/bloc/home_bloc/home_bloc.dart';
+import 'package:headphone_shop/bloc/home_bloc/home_state.dart';
 import 'package:headphone_shop/ui/screens/product_details_screen.dart';
+import 'package:headphone_shop/ui/widgets/boxShimmer.dart';
+import '../../bloc/home_bloc/home_event.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/product_card.dart';
 import '../widgets/sortButton.dart';
@@ -14,6 +19,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+
+
 List<String> filterBy = ['All Product', 'Popular', 'Recent', 'Best'];
 
 final List slideImages = [
@@ -23,6 +30,13 @@ final List slideImages = [
 ];
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+  BlocProvider.of<HomeBloc>(context).add(FetchProductEvent());
+    super.initState();
+  }
+
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -114,21 +128,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Container(
-                  height: 260,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    children:  [
-                      ProductCard(productName: "Boat Ws502",
-                        onOrderClicked: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const ProductDetailsScreen()));
-                        },
-                      ),
-                      ProductCard(productName: "Boat Ws502"),
-                      ProductCard(productName: "Boat Ws502"),
-                    ],
-                  ),
+                BlocConsumer<HomeBloc, HomeState>(
+                  listenWhen: (previous, current) => current is HomeActionState,
+                  buildWhen: (previous,current) => current is !HomeActionState,
+                  listener: (context, state){
+                    if(state is HomeProductAddedToCart){
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Item Added to cart")));
+                    } else if (state is HomeProductAddedToFavourite){
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Item Added to favourite")));
+                    }
+                  },
+                  builder: (context, state){
+                    if(state is HomeLoadingState){
+                      return const BoxShimmer();
+                    } else if(state is HomeSuccessState){
+                      return SizedBox(
+                        height: 300,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: state.headPhones.length,
+                            itemBuilder: (context,index){
+                              return ProductCard(headPhonesDataModel: state.headPhones[index],
+                                onOrderClicked:()=> Navigator.push(
+                                    context, MaterialPageRoute(builder: (context)=>const ProductDetailsScreen())),
+                              );
+                            }
+                        ),
+                      );
+                    }else if (state is HomeErrorState){
+                      return Text(state.errorMessage,style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20
+                      ),);
+                    } else{
+                      return Container();
+                    }
+                  },
                 )
               ],
             ),

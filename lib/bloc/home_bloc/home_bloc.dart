@@ -12,24 +12,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> fetchProductEvent(
-      FetchProductEvent event, Emitter<HomeState> emit) async{
+      FetchProductEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
-    try{
+    try {
       await Future.delayed(const Duration(seconds: 3));
-      emit(HomeSuccessState(headPhones: HeadPhones.productLists.map((e) => HeadPhonesDataModel(
-        id: e['id'],
+      final data = HeadPhones.productLists.map((e) => HeadPhonesDataModel(
+          id: e['id'],
           name: e['name'],
           price: e['price'],
+          discountPrice: e['discountPrice'],
           rating: e['rating'],
           description: e['description'],
-          imageUrl: e['imageUrl']
-      )).toList()
-      ));
-      //fetching from our json file
-      // final jsonData = await rootBundle.loadString('assets/products.json');
-      // final data = (json.decode(jsonData) as Map)['productLists'] as List;
-      // final listOfProduct = data.map((e) => null)
-    } catch (e){
+          imageUrl: e['imageUrl'])).toList();
+      emit(HomeSuccessState(headPhones: data));
+    } catch (e,s) {
+      print(e);
+      print(s);
       emit(HomeErrorState(errorMessage: e.toString()));
     }
   }

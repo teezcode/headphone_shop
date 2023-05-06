@@ -30,6 +30,7 @@ dependencies:
   flutter_screenutil:
   carousel_slider: ^4.2.1
   flutter_bloc: ^8.1.2
+  shimmer: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
