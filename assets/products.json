@@ -5,6 +5,7 @@
       "name": "Sony WH-1000XM4",
       "price": 310.99,
       "rating": "4.5",
+      "discountPrice": 4.5,
       "description" : "No matter where you go, the black Sony WH-1000XM4 Wireless Noise-Canceling Over-Ear Headphones deliver pristine sound quality while automatically adjusting ambient sound according to your activity and registered locations, leaving your hands and mind free from the hassle of changing settings just to hear what you want to hear.",
       "imageUrl": "https://www.bhphotovideo.com/cdn-cgi/image/format=auto,fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_wh1000xm4_b_wh_1000xm4_wireless_noise_canceling_over_ear_1596715570_1582549.jpg"
     },

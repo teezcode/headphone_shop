@@ -9,7 +9,7 @@ import '../../model/Datamodel/product_dataModel.dart';
 class ProductCard extends StatelessWidget {
   // final String? image;
   // final String productName;
-  final HeadPhonesDataModel headPhonesDataModel;
+  final Product headPhonesDataModel;
   final VoidCallback? onOrderClicked;
 
   const ProductCard({

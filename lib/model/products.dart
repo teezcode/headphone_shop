@@ -2,7 +2,7 @@ class HeadPhones{
 
   static List<Map<String,dynamic>> productLists = [
     {
-      'id' : '1',
+      'id' : 1,
       'name': "Sony WH",
       'price': 310.99,
       'discountPrice' : 100,
@@ -11,7 +11,7 @@ class HeadPhones{
       'imageUrl' : "images/headphone_4.png"
     },
     {
-      'id' : '2',
+      'id' : 2,
       'name': "Sony INZONE H9",
       'price': 420.99,
       'discountPrice' : 120,
@@ -20,7 +20,7 @@ class HeadPhones{
       'imageUrl' : "images/headphone_2.png"
     },
     {
-      'id' : '3',
+      'id' : 3,
       'name': "Sony MDR-ZX110AP",
       'description': "This Sony MDR-ZX110AP On-Ear Headphones with Microphone Kit from B&H bundles two pairs of these headphones together for your shopping convenience. 30mm dynamic drivers deliver an extended low frequency response of 12 Hz to 22 kHz so you can enjoy all kinds of music on-the-go. For improved portability, the earcups can swivel",
       'price': 180.99,
@@ -29,7 +29,7 @@ class HeadPhones{
       'imageUrl' : "images/headphone_5.png"
     },
     {
-      'id' : '4',
+      'id' : 4,
       'name': "Sennheiser HD 650",
       'price': 900.99,
       'discountPrice' : 180,
@@ -38,7 +38,7 @@ class HeadPhones{
       'imageUrl' : "images/headphone_4.png"
     },
     {
-      'id' : '5',
+      'id' : 5,
       'name': "Beat By Dre Hq120",
       'price': 2210.99,
       'discountPrice' : 110,
@@ -47,7 +47,7 @@ class HeadPhones{
       'imageUrl' : "images/headphone_5.png"
     },
     {
-      'id' : '6',
+      'id' : 6,
       'name': "Bose WTH 230",
       'price': 410.99,
       'discountPrice' : 110,

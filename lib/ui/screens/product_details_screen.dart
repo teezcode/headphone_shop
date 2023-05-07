@@ -6,7 +6,7 @@ import '../../model/Datamodel/product_dataModel.dart';
 import '../widgets/custom_button.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  final HeadPhonesDataModel headPhonesDataModel;
+  final Product headPhonesDataModel;
   const ProductDetailsScreen({Key? key, required this.headPhonesDataModel}) : super(key: key);
 
   @override

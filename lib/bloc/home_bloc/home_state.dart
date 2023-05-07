@@ -14,7 +14,7 @@ class HomeProductAddedToFavourite extends HomeActionState {}
 class HomeLoadingState extends HomeState{}
 
 class HomeSuccessState extends HomeState{
-  final List<HeadPhonesDataModel> headPhones;
+  final List<Product> headPhones;
   HomeSuccessState({required this.headPhones});
 }
 

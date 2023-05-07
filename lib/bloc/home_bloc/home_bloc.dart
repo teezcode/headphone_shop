@@ -16,16 +16,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(HomeLoadingState());
     try {
       await Future.delayed(const Duration(seconds: 3));
-      final data = HeadPhones.productLists.map((e) => HeadPhonesDataModel(
-          id: e['id'],
-          name: e['name'],
-          price: e['price'],
-          discountPrice: e['discountPrice'],
-          rating: e['rating'],
-          description: e['description'],
-          imageUrl: e['imageUrl'])).toList();
+      final data = HeadPhones.productLists.map((e) => Product.fromMap(e)).toList();
       emit(HomeSuccessState(headPhones: data));
-    } catch (e,s) {
+    } catch (e, s) {
       print(e);
       print(s);
       emit(HomeErrorState(errorMessage: e.toString()));
