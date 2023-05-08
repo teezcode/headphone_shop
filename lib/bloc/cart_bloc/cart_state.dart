@@ -6,6 +6,8 @@ abstract class CartActionState extends CartState{}
 
 class CartInitial extends CartState{}
 
+class ProductAddedToCart extends CartActionState {}
+
 class CartLoadingState extends CartState{}
 
 class CartEmptyState extends CartState{}

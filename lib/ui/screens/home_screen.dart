@@ -57,9 +57,14 @@ class _HomeScreenState extends State<HomeScreen> {
           leading:
               SvgPicture.asset("svgs/drawer_icon.svg", fit: BoxFit.scaleDown),
           actions: [
-            BlocBuilder<CartCubit,CartState>(
+            BlocConsumer<CartCubit,CartState>(
+              listener: (_, state) {
+                if(state is AddToCartState){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.headPhonesDataModel.name} Added to Cart')));
+                }
+              },
               builder: (_, state){
-                final cart = context.watch<CartCubit>().cartItems.length.toString();
+                final cart = context.read<CartCubit>().cartItems.length.toString();
                 return Container(
                   decoration: BoxDecoration(
                     //color: const Color(0xffF0F0F0),
@@ -164,6 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               _currentIndex = index;
                             });
+
                           },
                         ),
                       ),
@@ -171,16 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: 20),
-                BlocConsumer<HomeBloc, HomeState>(
-                  listenWhen: (previous, current) => current is HomeActionState,
-                  buildWhen: (previous,current) => current is !HomeActionState,
-                  listener: (context, state){
-                    if(state is HomeProductAddedToCart){
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Item Added to cart")));
-                    } else if (state is HomeProductAddedToFavourite){
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Item Added to favourite")));
-                    }
-                  },
+                BlocBuilder<HomeBloc, HomeState>(
                   builder: (context, state){
                     if(state is HomeLoadingState){
                       return const SizedBox(

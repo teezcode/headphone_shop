@@ -120,29 +120,25 @@ class ProductCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    BlocListener<CartCubit, CartState>(
-                      bloc: CartCubit(),
-                      listener: (_, state) {},
-                      child: GestureDetector(
-                        onTap: () {
-                          context.read<CartCubit>().addItemToCart(headPhonesDataModel);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    Color(0xff5D9CC6),
-                                    Color(0xff4E5BB3)
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight),
-                              borderRadius: BorderRadius.circular(5)),
-                          width: 28,
-                          height: 28,
-                          child: const Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<CartCubit>().addItemToCart(headPhonesDataModel);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                colors: [
+                                  Color(0xff5D9CC6),
+                                  Color(0xff4E5BB3)
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight),
+                            borderRadius: BorderRadius.circular(5)),
+                        width: 28,
+                        height: 28,
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.white,
                         ),
                       ),
                     )
