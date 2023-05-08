@@ -7,8 +7,8 @@ import 'package:headphone_shop/bloc/cart_bloc/cart_state.dart';
 import '../../model/Datamodel/product_dataModel.dart';
 
 class CartScreen extends StatefulWidget {
-  final Product? headPhonesDataModel;
-  const CartScreen({Key? key, this.headPhonesDataModel}) : super(key: key);
+  //final Product? headPhonesDataModel;
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
   State<CartScreen> createState() => _CartScreenState();
@@ -105,8 +105,8 @@ class _CartScreenState extends State<CartScreen> {
                                                   fontSize: 16,
                                                   color: Colors.white),
                                             ),
-                                            SizedBox(width: 5),
-                                            Icon(
+                                            const SizedBox(width: 5),
+                                            const Icon(
                                               Icons.star,
                                               size: 15,
                                               color: Colors.yellow,

@@ -219,7 +219,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 text: 'Add To Cart',
                                 backgroundColor: Color(0xff262626),
                                 onPressed: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen(headPhonesDataModel: widget.headPhonesDataModel,)));
+                                  context.read<CartCubit>().addItemToCart(widget.headPhonesDataModel);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen()));
                                 },
                               ),
                             ),
