@@ -41,4 +41,14 @@ class CartCubit extends Cubit<CartState>{
     emit(CartItemRemoved(product: product));
     return;
   }
+
+  int totalAmount() {
+    var total = 0;
+    double calculateTotal = 0;
+    for (Product product in cartItems) {
+      calculateTotal += (product.price! * product.quantity);
+      total = calculateTotal.toInt();
+    }
+    return total;
+  }
 }

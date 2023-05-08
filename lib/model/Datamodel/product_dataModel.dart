@@ -117,6 +117,7 @@ class Product {
     "imageUrl": imageUrl,
   };
 
+
   void increment() => quantity += 1;
   void decrement() => quantity -= 1;
 
