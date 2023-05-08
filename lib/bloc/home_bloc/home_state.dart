@@ -7,9 +7,6 @@ class HomeInitial extends HomeState{}
 
 abstract class HomeActionState extends HomeState{}
 
-class HomeProductAddedToCart extends HomeActionState {}
-
-class HomeProductAddedToFavourite extends HomeActionState {}
 
 class HomeLoadingState extends HomeState{}
 
