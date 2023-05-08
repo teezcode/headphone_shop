@@ -21,4 +21,24 @@ class CartCubit extends Cubit<CartState>{
       }
       emit(AddToCartState(headPhonesDataModel:product));
   }
+
+  void incrementCartItem(Product cart){
+    cart.increment();
+    emit(CartItemUpdated(product: cart));
+  }
+
+  void decrementCartItem(Product cart){
+    if(cart.quantity == 1){
+      cartItems.remove(cart);
+    }else{
+      cart.decrement();
+    }
+    emit(CartItemUpdated(product: cart));
+  }
+
+  void removeItemFromCart(Product product) {
+    cartItems.remove(product);
+    emit(CartItemRemoved(product: product));
+    return;
+  }
 }

@@ -50,6 +50,8 @@ class _CartScreenState extends State<CartScreen> {
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Card(
                         shape: RoundedRectangleBorder(
@@ -128,7 +130,7 @@ class _CartScreenState extends State<CartScreen> {
                                             SizedBox(width: 10),
                                             Text(
                                               "\$${cart.discountPrice}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 20,
                                                   color: Colors.white),
@@ -148,12 +150,14 @@ class _CartScreenState extends State<CartScreen> {
                                         color: Colors.white,
                                         size: 18,
                                       ),
-                                      onOrderClicked: () {},
+                                      onOrderClicked: () {
+                                        bloc.decrementCartItem(cart);
+                                      },
                                     ),
                                     const SizedBox(width: 8),
-                                    const Text(
-                                      "0",
-                                      style: TextStyle(
+                                     Text(
+                                      cart.quantity.toString(),
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 18,
                                           color: Colors.white),
@@ -167,28 +171,44 @@ class _CartScreenState extends State<CartScreen> {
                                           size: 18,
                                         ),
                                       ),
-                                      onOrderClicked: () {},
+                                      onOrderClicked: () {
+                                        bloc.incrementCartItem(cart);
+                                      },
                                     ),
                                     Spacer(),
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset("svgs/delete.svg",
-                                            fit: BoxFit.scaleDown),
-                                        SizedBox(width: 8),
-                                        const Text(
-                                          "Remove",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 18,
-                                              color: Colors.grey),
-                                        ),
-                                      ],
+                                    GestureDetector(
+                                      onTap: (){
+                                        bloc.removeItemFromCart(cart);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset("svgs/delete.svg",
+                                              fit: BoxFit.scaleDown),
+                                          SizedBox(width: 8),
+                                          const Text(
+                                            "Remove",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 18,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
                                     )
                                   ],
                                 )
                               ],
                             ),
                           ),
+                        ),
+                      ),
+                      SizedBox(height: 50),
+                      Align(
+                        alignment: FractionalOffset.bottomCenter,
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          color: Colors.white,
                         ),
                       )
                     ],

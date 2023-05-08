@@ -7,6 +7,15 @@ class CartInitial extends CartState{}
 
 class CartLoadingState extends CartState{}
 
+class CartItemUpdated extends CartState{
+  final Product product;
+  CartItemUpdated({required this.product});
+}
+
+class CartItemRemoved extends CartState{
+  final Product product;
+  CartItemRemoved({required this.product});
+}
 
 class CartEmptyState extends CartState{}
 
