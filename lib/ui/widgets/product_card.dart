@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:headphone_shop/bloc/cart_bloc/cart_bloc.dart';
+import 'package:headphone_shop/bloc/cart_bloc/cart_state.dart';
 import 'package:headphone_shop/bloc/home_bloc/home_bloc.dart';
 import 'package:headphone_shop/bloc/home_bloc/home_state.dart';
 
 import '../../model/Datamodel/product_dataModel.dart';
 
 class ProductCard extends StatelessWidget {
-  // final String? image;
-  // final String productName;
   final Product headPhonesDataModel;
   final VoidCallback? onOrderClicked;
 
   const ProductCard({
     Key? key,
-    //this.image,
-    //required this.productName,
     this.onOrderClicked,
     required this.headPhonesDataModel,
   }) : super(key: key);
@@ -23,7 +21,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
-      builder: (_,state){
+      builder: (_, state) {
         return Container(
           margin: EdgeInsets.only(right: 20),
           width: 200,
@@ -72,9 +70,7 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
-
-                      },
+                      onTap: () {},
                       child: SvgPicture.asset(
                         'svgs/fav.svg',
                         width: 20,
@@ -88,11 +84,13 @@ class ProductCard extends StatelessWidget {
                   onTap: onOrderClicked,
                   child: Container(
                     decoration: BoxDecoration(
-                      image: headPhonesDataModel.imageUrl == null ? null : DecorationImage(
-                        image: AssetImage(headPhonesDataModel.imageUrl!),
-                        //fit: BoxFit.cover
-                      )
-                    ),
+                        image: headPhonesDataModel.imageUrl == null
+                            ? null
+                            : DecorationImage(
+                                image:
+                                    AssetImage(headPhonesDataModel.imageUrl!),
+                                //fit: BoxFit.cover
+                              )),
                     width: 105.99,
                     height: 118.27,
                   ),
@@ -122,22 +120,29 @@ class ProductCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: (){
-
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                                colors: [Color(0xff5D9CC6), Color(0xff4E5BB3)],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight),
-                            borderRadius: BorderRadius.circular(5)),
-                        width: 28,
-                        height: 28,
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
+                    BlocListener<CartCubit, CartState>(
+                      bloc: CartCubit(),
+                      listener: (_, state) {},
+                      child: GestureDetector(
+                        onTap: () {
+                          context.read<CartCubit>().addItemToCart(headPhonesDataModel);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xff5D9CC6),
+                                    Color(0xff4E5BB3)
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight),
+                              borderRadius: BorderRadius.circular(5)),
+                          width: 28,
+                          height: 28,
+                          child: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     )

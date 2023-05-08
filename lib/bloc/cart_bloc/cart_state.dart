@@ -10,17 +10,13 @@ class CartLoadingState extends CartState{}
 
 class CartEmptyState extends CartState{}
 
-// class CartSuccessState extends CartState{
-//   final List <HeadPhonesDataModel> headPhonesDataModel;
-//   CartSuccessState({required this.headPhonesDataModel});
-// }
 
 class AddToCartState extends CartActionState{
-  final HeadPhonesDataModel headPhonesDataModel;
+  final Product headPhonesDataModel;
   AddToCartState({required this.headPhonesDataModel});
 }
 
 class RemoveFromCartState extends CartActionState{
-  final HeadPhonesDataModel headPhonesDataModel;
+  final Product headPhonesDataModel;
   RemoveFromCartState({required this.headPhonesDataModel});
 }
