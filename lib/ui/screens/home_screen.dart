@@ -186,13 +186,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 350,
                           child: BoxShimmer());
                     } else if(state is HomeSuccessState){
-                      return BlocListener<FavouriteCubit, FavouriteState>(
+                      return BlocConsumer<FavouriteCubit, FavouriteState>(
                         listener:(_,state){
                           if(state is AddedToFavourite){
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.product.name} Added to Favourite')));
                           }
                         },
-                        child: SizedBox(
+                        builder: (_,__)=> SizedBox(
                           height: 300,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,

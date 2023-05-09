@@ -20,9 +20,11 @@ class ProductCard extends StatelessWidget {
     required this.headPhonesDataModel,
   }) : super(key: key);
 
+    bool isClicked (BuildContext context){
+      return context.read<FavouriteCubit>().favouriteItem.any((item) => item.id == headPhonesDataModel.id);
+    }
   @override
   Widget build(BuildContext context) {
-    bool isClicked = false;
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (_, state) {
         return Container(
@@ -76,7 +78,7 @@ class ProductCard extends StatelessWidget {
                         onTap: () {
                           context.read<FavouriteCubit>().toggleFavourite(headPhonesDataModel);
                         },
-                        child:Icon(Icons.favorite_border,size: 20,color: Colors.grey,)
+                        child: isClicked(context) ? const Icon(Icons.favorite,size: 20,color: Colors.red,) : const Icon(Icons.favorite_border,size: 20,color: Colors.grey,)
                       ),
                   ],
                 ),
