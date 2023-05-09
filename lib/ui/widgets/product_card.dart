@@ -22,6 +22,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isClicked = false;
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (_, state) {
         return Container(
@@ -71,23 +72,12 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    BlocListener<FavouriteCubit,FavouriteState>(
-                      listener:(_,state){
-                        if(state is AddedToFavourite){
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.product.name} Added to Favourite')));
-                        }
-                      },
-                      child: GestureDetector(
+                      GestureDetector(
                         onTap: () {
-                          context.read<FavouriteCubit>().addToFavourite(headPhonesDataModel);
+                          context.read<FavouriteCubit>().toggleFavourite(headPhonesDataModel);
                         },
-                        child: SvgPicture.asset(
-                          'svgs/fav.svg',
-                          width: 20,
-                          height: 15,
-                        ),
+                        child:Icon(Icons.favorite_border,size: 20,color: Colors.grey,)
                       ),
-                    )
                   ],
                 ),
                 SizedBox(height: 12),

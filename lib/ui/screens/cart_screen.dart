@@ -45,178 +45,179 @@ class _CartScreenState extends State<CartScreen> {
             return Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: cartItems.length,
-                  itemBuilder: (context ,i){
-                    final cart = cartItems[i];
-                    return Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            elevation: 5,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Color(0xff262626),
-                                  borderRadius: BorderRadius.circular(20)),
-                              width: double.infinity,
-                              child: Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          children: [
-                                            Container(
-                                              width: 127,
-                                              height: 111,
-                                              decoration: BoxDecoration(
-                                                image: cart.imageUrl == null ? null: DecorationImage(
-                                                  image:AssetImage(cart.imageUrl!),
-                                                  //fit: BoxFit.cover
-                                                )
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: cartItems.length,
+                    itemBuilder: (context ,i){
+                      final cart = cartItems[i];
+                      return Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              elevation: 5,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Color(0xff262626),
+                                    borderRadius: BorderRadius.circular(20)),
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              Container(
+                                                width: 127,
+                                                height: 111,
+                                                decoration: BoxDecoration(
+                                                  image: cart.imageUrl == null ? null: DecorationImage(
+                                                    image:AssetImage(cart.imageUrl!),
+                                                    //fit: BoxFit.cover
+                                                  )
+                                                ),
                                               ),
-                                            ),
-                                            const SizedBox(height: 20),
-                                          ],
-                                        ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              cart.name!,
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 18,
-                                                  color: Colors.white),
-                                            ),
-                                            SizedBox(height: 10),
-                                            Row(
-                                              children:  [
-                                                Text(
-                                                  cart.rating!,
-                                                  style: const TextStyle(
-                                                      fontWeight: FontWeight.w600,
-                                                      fontSize: 16,
-                                                      color: Colors.white),
-                                                ),
-                                                const SizedBox(width: 5),
-                                                const Icon(
-                                                  Icons.star,
-                                                  size: 15,
-                                                  color: Colors.yellow,
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(height: 10),
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  "\$${cart.discountPrice}",
-                                                  style: const TextStyle(
-                                                      fontWeight: FontWeight.w600,
-                                                      fontSize: 18,
-                                                      color: Colors.grey,
-                                                      decoration:
-                                                      TextDecoration.lineThrough),
-                                                ),
-                                                SizedBox(width: 10),
-                                                Text(
-                                                  "\$${cart.price}",
-                                                  style: const TextStyle(
-                                                      fontWeight: FontWeight.w600,
-                                                      fontSize: 20,
-                                                      color: Colors.white),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(height: 20),
-                                    Row(
-                                      children: [
-                                        AddAndRemoveButton(
-                                          icon: const Icon(
-                                            Icons.remove,
-                                            color: Colors.white,
-                                            size: 18,
+                                              const SizedBox(height: 20),
+                                            ],
                                           ),
-                                          onOrderClicked: () {
-                                            bloc.decrementCartItem(cart);
-                                          },
-                                        ),
-                                        const SizedBox(width: 8),
-                                         Text(
-                                          cart.quantity.toString(),
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 18,
-                                              color: Colors.white),
-                                        ),
-                                        const SizedBox(width: 8),
-                                        AddAndRemoveButton(
-                                          icon: const Center(
-                                            child: Icon(
-                                              Icons.add,
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                cart.name!,
+                                                style: const TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 18,
+                                                    color: Colors.white),
+                                              ),
+                                              SizedBox(height: 10),
+                                              Row(
+                                                children:  [
+                                                  Text(
+                                                    cart.rating!,
+                                                    style: const TextStyle(
+                                                        fontWeight: FontWeight.w600,
+                                                        fontSize: 16,
+                                                        color: Colors.white),
+                                                  ),
+                                                  const SizedBox(width: 5),
+                                                  const Icon(
+                                                    Icons.star,
+                                                    size: 15,
+                                                    color: Colors.yellow,
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 10),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    "\$${cart.discountPrice}",
+                                                    style: const TextStyle(
+                                                        fontWeight: FontWeight.w600,
+                                                        fontSize: 18,
+                                                        color: Colors.grey,
+                                                        decoration:
+                                                        TextDecoration.lineThrough),
+                                                  ),
+                                                  SizedBox(width: 10),
+                                                  Text(
+                                                    "\$${cart.price}",
+                                                    style: const TextStyle(
+                                                        fontWeight: FontWeight.w600,
+                                                        fontSize: 20,
+                                                        color: Colors.white),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(height: 20),
+                                      Row(
+                                        children: [
+                                          AddAndRemoveButton(
+                                            icon: const Icon(
+                                              Icons.remove,
                                               color: Colors.white,
                                               size: 18,
                                             ),
+                                            onOrderClicked: () {
+                                              bloc.decrementCartItem(cart);
+                                            },
                                           ),
-                                          onOrderClicked: () {
-                                            bloc.incrementCartItem(cart);
-                                          },
-                                        ),
-                                        Spacer(),
-                                        GestureDetector(
-                                          onTap: (){
-                                            bloc.removeItemFromCart(cart);
-                                          },
-                                          child: Row(
-                                            children: [
-                                              SvgPicture.asset("svgs/delete.svg",
-                                                  fit: BoxFit.scaleDown),
-                                              SizedBox(width: 8),
-                                              const Text(
-                                                "Remove",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 18,
-                                                    color: Colors.grey),
+                                          const SizedBox(width: 8),
+                                           Text(
+                                            cart.quantity.toString(),
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18,
+                                                color: Colors.white),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          AddAndRemoveButton(
+                                            icon: const Center(
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                                size: 18,
                                               ),
-                                            ],
+                                            ),
+                                            onOrderClicked: () {
+                                              bloc.incrementCartItem(cart);
+                                            },
                                           ),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                                          Spacer(),
+                                          GestureDetector(
+                                            onTap: (){
+                                              bloc.removeItemFromCart(cart);
+                                            },
+                                            child: Row(
+                                              children: [
+                                                SvgPicture.asset("svgs/delete.svg",
+                                                    fit: BoxFit.scaleDown),
+                                                SizedBox(width: 8),
+                                                const Text(
+                                                  "Remove",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 18,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
-               Spacer(),
                 Card(
                   elevation: 5,
                   child: Container(
                     width: double.infinity,
-                    height: 110,
+                    height: 100,
                       color: Colors.black87,
                     child:Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40.0,vertical: 20),

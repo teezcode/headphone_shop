@@ -8,7 +8,7 @@ class FavouriteCubit extends Cubit<FavouriteState>{
   final List<Product> favouriteItem = [];
   List<Product> get faveModels => favouriteItem;
 
-  void addToFavourite(Product product){
+  void toggleFavourite(Product product){
     bool exists = favouriteItem.any((item) => item.id == product.id);
 
     if(!exists){
