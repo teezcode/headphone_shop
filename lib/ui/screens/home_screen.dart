@@ -9,6 +9,7 @@ import 'package:headphone_shop/bloc/home_bloc/home_bloc.dart';
 import 'package:headphone_shop/bloc/home_bloc/home_state.dart';
 import 'package:headphone_shop/ui/screens/product_details_screen.dart';
 import 'package:headphone_shop/ui/widgets/boxShimmer.dart';
+import '../../bloc/favourite_bloc/favourite_state.dart';
 import '../../bloc/home_bloc/home_event.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/product_card.dart';

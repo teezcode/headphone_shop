@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:headphone_shop/bloc/cart_bloc/cart_bloc.dart';
 import 'package:headphone_shop/bloc/cart_bloc/cart_state.dart';
+import 'package:headphone_shop/bloc/favourite_bloc/favourite_cubit.dart';
+import 'package:headphone_shop/bloc/favourite_bloc/favourite_state.dart';
 import 'package:headphone_shop/bloc/home_bloc/home_bloc.dart';
 import 'package:headphone_shop/bloc/home_bloc/home_state.dart';
 
@@ -69,12 +71,21 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: SvgPicture.asset(
-                        'svgs/fav.svg',
-                        width: 20,
-                        height: 15,
+                    BlocListener<FavouriteCubit,FavouriteState>(
+                      listener:(_,state){
+                        if(state is AddedToFavourite){
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.product.name} Added to Favourite')));
+                        }
+                      },
+                      child: GestureDetector(
+                        onTap: () {
+                          context.read<FavouriteCubit>().addToFavourite(headPhonesDataModel);
+                        },
+                        child: SvgPicture.asset(
+                          'svgs/fav.svg',
+                          width: 20,
+                          height: 15,
+                        ),
                       ),
                     )
                   ],
