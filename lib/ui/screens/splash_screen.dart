@@ -73,7 +73,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Container(
               width: double.infinity,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 80),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 60, horizontal: 80),
                 child: HorizontalSlidableButton(
                   height: 60,
                   buttonWidth: 60.0,
@@ -99,7 +100,13 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                   onChanged: (position) {
                     if (position == SlidableButtonPosition.start) {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavigationContainer()));
+                      Navigator.pushAndRemoveUntil(
+                        context, MaterialPageRoute(builder: (BuildContext context) {
+                          return const NavigationContainer();
+                        }),
+                        (route) => false,
+                      );
+                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavigationContainer()));
                     }
                   },
                 ),
