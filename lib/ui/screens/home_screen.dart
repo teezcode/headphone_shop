@@ -190,6 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         listener:(_,state){
                           if(state is AddedToFavourite){
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.product.name} Added to Favourite')));
+                          }else if(state is RemovedFromFavourite){
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.product.name} Removed from Favourite')));
                           }
                         },
                         builder: (_,__)=> SizedBox(
