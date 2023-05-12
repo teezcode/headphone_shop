@@ -7,11 +7,14 @@ import 'package:headphone_shop/bloc/cart_bloc/cart_bloc.dart';
 import 'package:headphone_shop/bloc/cart_bloc/cart_state.dart';
 import 'package:headphone_shop/bloc/home_bloc/home_bloc.dart';
 import 'package:headphone_shop/bloc/home_bloc/home_state.dart';
+import 'package:headphone_shop/bloc/search_bloc/search_cubit.dart';
+import 'package:headphone_shop/bloc/search_bloc/search_state.dart';
 import 'package:headphone_shop/ui/screens/product_details_screen.dart';
 import 'package:headphone_shop/ui/widgets/boxShimmer.dart';
 import '../../bloc/favourite_bloc/favourite_cubit.dart';
 import '../../bloc/favourite_bloc/favourite_state.dart';
 import '../../bloc/home_bloc/home_event.dart';
+import '../../model/Datamodel/product_dataModel.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/product_card.dart';
 import '../widgets/sortButton.dart';
@@ -34,6 +37,7 @@ final List slideImages = [
 ];
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -136,6 +140,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: double.infinity,
                     //height: 59,
                     child: CustomTextField(
+                      controller: searchController,
+                      onChanged: (value)=>context.read<SearchCubit>().searchProduct(value,context.read<HomeBloc>().products),
                       prefixIcon: SvgPicture.asset("svgs/search.svg",
                           fit: BoxFit.scaleDown),
                       hintText: 'Search HeadPhones',
@@ -188,24 +194,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     } else if(state is HomeSuccessState){
                       return BlocConsumer<FavouriteCubit, FavouriteState>(
                         listener:(_,state){
-                          if(state is AddedToFavourite){
+                          if(state is AddedToFavouriteState){
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.product.name} Added to Favourite')));
-                          }else if(state is RemovedFromFavourite){
+                          }else if(state is RemovedFromFavouriteState){
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${state.product.name} Removed from Favourite')));
                           }
                         },
-                        builder: (_,__)=> SizedBox(
-                          height: 300,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: state.headPhones.length,
-                              itemBuilder: (context,index){
-                                return ProductCard(headPhonesDataModel: state.headPhones[index],
-                                    onOrderClicked:()=> Navigator.push(
-                                        context, MaterialPageRoute(builder: (context)=> ProductDetailsScreen(headPhonesDataModel: state.headPhones[index],))),
-                                  );
-                              }
-                          ),
+                        builder: (_,__)=> BlocBuilder<SearchCubit,List<Product>>(
+                          builder: (_,searchState){
+                            List<Product> newState = [];
+                            if(searchState.isEmpty && searchController.text.isEmpty){
+                              newState = state.headPhones;
+                            }else if(searchState.isEmpty && searchController.text.isNotEmpty){
+                              return const Center(child: Text("search result empty",
+                                style: TextStyle(fontSize: 20,color: Colors.white),));
+                            }else {
+                              newState = searchState;
+                            }
+                            return SizedBox(
+                              height: 300,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: newState.length,
+                                  itemBuilder: (context,index){
+                                    return ProductCard(headPhonesDataModel: newState[index],
+                                      onOrderClicked:()=> Navigator.push(
+                                          context, MaterialPageRoute(builder: (context)=> ProductDetailsScreen(headPhonesDataModel: newState[index],))),
+                                    );
+                                  }
+                              ),
+                            );
+                          },
                         ),
                       );
                     }else if (state is HomeErrorState){

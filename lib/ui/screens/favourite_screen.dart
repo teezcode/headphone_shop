@@ -32,7 +32,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             builder: (_,state){
               final bloc = context.read<FavouriteCubit>();
               final cartItems = bloc.favouriteItem;
-                if(state is AddedToFavourite || state is RemovedFromFavourite){
+                if(state is AddedToFavouriteState || state is RemovedFromFavouriteState){
                 final fave = context.read<FavouriteCubit>().favouriteItem;
                 if (cartItems.isEmpty) {
                   return const Center(child: Text("Your Favourite List is Empty",style: TextStyle(

@@ -11,16 +11,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<FetchProductEvent>(fetchProductEvent);
   }
 
+  List<Product> products = [];
+
   FutureOr<void> fetchProductEvent(
       FetchProductEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
     try {
       await Future.delayed(const Duration(seconds: 3));
-      final data = HeadPhones.productLists.map((e) => Product.fromMap(e)).toList();
-      emit(HomeSuccessState(headPhones: data));
+      products = HeadPhones.productLists.map((e) => Product.fromMap(e)).toList();
+      emit(HomeSuccessState(headPhones: products));
     } catch (e, s) {
-      print(e);
-      print(s);
+      //print(e);
+      //print(s);
       emit(HomeErrorState(errorMessage: e.toString()));
     }
   }

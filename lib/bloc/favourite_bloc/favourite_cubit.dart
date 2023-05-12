@@ -13,10 +13,10 @@ class FavouriteCubit extends Cubit<FavouriteState>{
 
     if(!exists){
       favouriteItem.add(product);
-      emit(AddedToFavourite(product: product));
+      emit(AddedToFavouriteState(product: product));
     } else{
       favouriteItem.removeWhere((item) => item.id == product.id);
-      emit(RemovedFromFavourite(product: product));
+      emit(RemovedFromFavouriteState(product: product));
     }
   }
 }

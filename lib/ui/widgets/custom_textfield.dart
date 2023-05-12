@@ -14,11 +14,13 @@ class CustomTextField extends StatefulWidget {
   final VoidCallback? onTap;
   final Widget? prefixIcon;
   final bool? obscureText;
+  final Function(String)? onChanged;
 
 
   const CustomTextField({Key? key,
     this.title,
     this.hintText,
+    this.onChanged,
     this.icon,
     this.isSecure = false,
     this.validator,
@@ -47,6 +49,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       readOnly: widget.readOnly??false,
       onTap: widget.onTap,
       keyboardType:widget.keys,

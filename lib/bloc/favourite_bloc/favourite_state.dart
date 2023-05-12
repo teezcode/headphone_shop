@@ -4,12 +4,12 @@ abstract class FavouriteState {}
 
 class FavouriteInitial extends FavouriteState{}
 
-class AddedToFavourite extends FavouriteState{
+class AddedToFavouriteState extends FavouriteState{
   final Product product;
-  AddedToFavourite({required this.product});
+  AddedToFavouriteState({required this.product});
 }
 
-class RemovedFromFavourite extends FavouriteState{
+class RemovedFromFavouriteState extends FavouriteState{
   final Product product;
-  RemovedFromFavourite({required this.product});
+  RemovedFromFavouriteState({required this.product});
 }
