@@ -9,9 +9,15 @@ class SearchCubit extends Cubit<SearchState>{
   List<Product> get faveModels => searchItem;
 
   void searchProduct(String product){
-    List<Map<String,dynamic>> result = [];
+    List result = [];
+    result.clear();
     if(product.isEmpty){
-
+      return;
+    }
+    for (var item in searchItem) {
+      if(item.name!.contains(product));
+      result.add(item);
+      emit(SearchProduct(product: item));
     }
   }
 }
